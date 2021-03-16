@@ -7,21 +7,26 @@
 
 import Foundation
 
+
+let linkedList = LinkedList()
+
 print("Program begun...")
 
 var quit: Bool = false
 
 while quit == false {
-    print("Type command ('sum' or 'exit' or 'times'): ")
+    print("Type command ('push', 'append', 'print' or 'exit'): ")
     let command = readLine()
-    
+
     switch command?.lowercased() {
     case "exit":
         quit = true
-    case "sum":
-        sumCommandProcess()
-    case "times":
-        timesCommandProcess()
+    case "push":
+        pushCommand()
+    case "append":
+        appendCommand()
+    case "print":
+        printCommand()
     default:
         print("Unknown command...")
     }
@@ -29,61 +34,20 @@ while quit == false {
 
 print("Program ended...")
 
-func sumCommandProcess() {
-    print("Please add first number:")
-    let firstNumberStr = readLine()
+func pushCommand() {
+    let stringOptionalNumValue = readLine()
     
-    print("Please add second number:")
-    let secondNumberStr = readLine()
-    
-    let firstNumber: Double
-    let secondNumber: Double
-    
-    if let fns = firstNumberStr, let fn = Double(fns) {
-        firstNumber = fn
+    if let stringNumValue = stringOptionalNumValue, let num = Int(stringNumValue) {
+        linkedList.push(num)
     } else {
-        firstNumber = 0
-        print("Error. Unknown first number")
-        return
+        print("Num push error casting...")
     }
-    
-    if let sns = secondNumberStr, let sn = Double(sns) {
-        secondNumber = sn
-    } else {
-        secondNumber = 0
-        print("Error. Unknown second number")
-        return
-    }
-    
-    print("\(firstNumber) + \(secondNumber) = \(firstNumber + secondNumber)")
 }
 
-func timesCommandProcess() {
-//    todo
-    print("Please add first number:")
-    let firstNumberString = readLine()
+func appendCommand() {
     
-    print("Please add second number:")
-    let secondNumberString = readLine()
-    
-    let firstNumber1: Double
-    let secondNumber2: Double
-    
-    if let fNStr = firstNumberString, let fNumb = Double(fNStr) {
-        firstNumber1 = fNumb
-    } else {
-        firstNumber1 = 0
-        print("Error. Unknown first number")
-        return
-    }
-    
-    if let sNStr = secondNumberString, let sNumb = Double(sNStr) {
-        secondNumber2 = sNumb
-    } else {
-        secondNumber2 = 0
-        print("Error. Unknown second number")
-        return
-    }
-    
-    print("\(firstNumber1) + \(secondNumber2) = \(firstNumber1 * secondNumber2)")
+}
+
+func printCommand() {
+    print(linkedList.description)
 }

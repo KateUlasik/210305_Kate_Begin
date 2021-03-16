@@ -6,7 +6,22 @@
 //
 
 import Foundation
-protocol Node {
-    var value : String { get set }
-    var next: Node { get set }
+
+class Node {
+    var value: Int
+    var next: Node?
+    
+    init(value: Int) {
+        self.value = value
+    }
+}
+
+extension Node: CustomStringConvertible {
+    var description: String {
+        if let n = next {
+            return "\(value) -> \(String(describing: n))"
+        } else {
+            return "\(value)"
+        }
+    }
 }
