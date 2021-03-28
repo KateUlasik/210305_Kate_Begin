@@ -9,14 +9,13 @@ import Foundation
 
 
 let linkedList = LinkedList()
-// This is develop branch
 
 print("Program begun...")
 
 var quit: Bool = false
 
 while quit == false {
-    print("Type command ('push', 'append', 'print' or 'exit'): ")
+    print("Type command ('push', 'append', 'print', 'play' or 'exit'): ")
     let command = readLine()
 
     switch command?.lowercased() {
@@ -28,6 +27,8 @@ while quit == false {
         appendCommand()
     case "print":
         printCommand()
+    case "play":
+        playCommand()
     default:
         print("Unknown command...")
     }
@@ -51,4 +52,8 @@ func appendCommand() {
 
 func printCommand() {
     print(linkedList.description)
+}
+
+func playCommand() {
+    MusicPlayerManager.sharedInstance.playNotes(notes: linkedList)
 }
