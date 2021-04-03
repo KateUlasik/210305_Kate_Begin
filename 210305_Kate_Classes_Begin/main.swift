@@ -57,3 +57,5 @@ func printCommand() {
 func playCommand() {
     MusicPlayerManager.sharedInstance.playNotes(notes: linkedList)
 }
+
+
