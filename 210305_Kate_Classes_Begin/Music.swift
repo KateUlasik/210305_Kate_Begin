@@ -38,9 +38,9 @@ class MusicPlayerManager {
                                                releaseVelocity: 0,
                                                duration: 1.0)
                 
-                guard let track = track else { fatalError() }
-                musicTrack = MusicTrackNewMIDINoteEvent(track, time, &midiNote)
-                time += 1
+                guard let track = self.track else { fatalError() }
+                self.musicTrack = MusicTrackNewMIDINoteEvent(track, self.time, &midiNote)
+                self.time += 1
             }
             
             currentNode = currentNode?.next
@@ -48,6 +48,7 @@ class MusicPlayerManager {
         
         self.player = MusicPlayerSetSequence(self.musicPlayer!, self.sequence)
         self.player = MusicPlayerStart(self.musicPlayer!)
+
     }
     
 }
