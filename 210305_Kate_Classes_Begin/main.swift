@@ -9,7 +9,6 @@ import Foundation
 
 
 var linkedList = LinkedList<Int>()
-
 print("Program begun...")
 
 var quit: Bool = false
@@ -29,7 +28,7 @@ while quit == false {
         printCommand()
     case "play":
         playCommand()
-        sleep(3)
+        
     default:
         print("Unknown command...")
     }
@@ -63,7 +62,6 @@ func printCommand() {
 
 func playCommand() {
     MusicPlayerManager.sharedInstance.playNotes(notes: linkedList)
-    
 }
 
 

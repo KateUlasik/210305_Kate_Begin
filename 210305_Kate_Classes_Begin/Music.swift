@@ -14,12 +14,12 @@ class MusicPlayerManager {
     static let sharedInstance = MusicPlayerManager()
     private init() {}
     
-    var musicPlayer : MusicPlayer? = nil
-    var sequence : MusicSequence? = nil
-    var track : MusicTrack? = nil
+    var musicPlayer : MusicPlayer?
+    var sequence : MusicSequence?
+    var track : MusicTrack?
     var time = MusicTimeStamp(1.0)
-    var player: OSStatus? = nil
-    var musicTrack: OSStatus? = nil
+    var player: OSStatus?
+    var musicTrack: OSStatus?
     
     func playNotes(notes linkedList: LinkedList<Int>) {
         _ = NewMusicSequence(&self.sequence)
@@ -46,8 +46,10 @@ class MusicPlayerManager {
             currentNode = currentNode?.next
         } while currentNode != nil
         
-        self.player = MusicPlayerSetSequence(self.musicPlayer!, self.sequence)
-        self.player = MusicPlayerStart(self.musicPlayer!)
+        guard let mp = self.musicPlayer else { return }
+        
+        self.player = MusicPlayerSetSequence(mp, self.sequence)
+        self.player = MusicPlayerStart(mp)
 
     }
     
