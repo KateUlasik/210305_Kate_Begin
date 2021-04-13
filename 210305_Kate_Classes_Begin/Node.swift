@@ -7,21 +7,25 @@
 
 import Foundation
 
-class Node {
-    var value: Int
-    var next: Node?
+class Node<Value> {
     
-    init(value: Int) {
+    var value :Value
+    var next :Node?
+    
+    init(value :Value, next :Node? = nil) {
         self.value = value
+        self.next = next
     }
 }
 
-extension Node: CustomStringConvertible {
-    var description: String {
-        if let n = next {
-            return "\(value) -> \(String(describing: n))"
-        } else {
+extension Node :CustomStringConvertible {
+    
+    var description :String {
+        
+        guard let next = next else {
             return "\(value)"
         }
+        return "\(value) -> " + String(describing: next) + " "
     }
 }
+

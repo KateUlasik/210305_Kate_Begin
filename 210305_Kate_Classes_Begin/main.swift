@@ -8,7 +8,7 @@
 import Foundation
 
 
-let linkedList = LinkedList()
+var linkedList = LinkedList<Int>()
 
 print("Program begun...")
 
